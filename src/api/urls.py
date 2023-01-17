@@ -1,7 +1,7 @@
-from django.urls import include, re_path,path
+from django.urls import include, re_path, path
 from rest_framework import permissions
 
-from src.api.views import FaceBookLogin
+from src.api.views import FaceBookLogin, OpenAIChatAPi
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
@@ -17,7 +17,9 @@ schema_view = get_schema_view(
 app_name = "api"
 urlpatterns = [
     path('rest-auth/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),    re_path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    re_path('rest-auth/registration/', include('rest_auth.registration.urls')),
     re_path('rest-auth/', include('rest_auth.urls')),
     re_path('rest-auth/facebook/$', FaceBookLogin.as_view(), name='fb_login'),
+    re_path('open-ai', OpenAIChatAPi.as_view(), name="open-ai")
 ]
