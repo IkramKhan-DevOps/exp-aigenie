@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import datetime
 from pathlib import Path
-
-import datetime as datetime
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,11 +58,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'rest_auth.registration',
-    'drf_yasg',
-
-    'oauth2_provider',
-    'social_django',
-    'rest_framework_social_oauth2',
 
     'src.api.apps.ApiConfig',
     'src.website.apps.WebsiteConfig',
