@@ -56,8 +56,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
-    'rest_auth.registration',
+    'exarth_rest_auth',
+    'exarth_rest_auth.registration',
     'drf_yasg',
 
     'src.api.apps.ApiConfig',

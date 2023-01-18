@@ -1,6 +1,6 @@
-django~=4.1.5
-django-filter~=22.1
-django-allauth~=0.52.0
+django
+django-filter
+django-allauth
 python-dateutil
 markdown
 django-resized
@@ -14,4 +14,7 @@ django-phonenumber-field
 django-phonenumbers
 django-environ
 DateTime~=5.0
-
+djangorestframework
+exarth-rest-auth
+drf_yasg
+openai
