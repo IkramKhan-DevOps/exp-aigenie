@@ -6,5 +6,5 @@ from src.api.views import OpenAIChatAPi
 app_name = "api"
 # Api Urls
 urlpatterns = [
-    re_path('chat-with-ai/', OpenAIChatAPi.as_view(), name="open-ai")
+    re_path('chat-with-ai/', OpenAIChatAPi.as_view(), name="open-ai"),
 ]

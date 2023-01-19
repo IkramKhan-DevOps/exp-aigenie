@@ -10,6 +10,7 @@ django-crispy-forms
 pillow
 six~=1.16.0
 Faker
+environ
 django-phonenumber-field
 django-phonenumbers
 django-environ
