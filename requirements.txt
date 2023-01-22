@@ -16,6 +16,7 @@ django-phonenumbers
 django-environ
 DateTime~=5.0
 djangorestframework
+djangorestframework-simplejwt
 exarth-rest-auth
 drf_yasg
 openai

@@ -206,6 +206,18 @@ SWAGGER_SETTINGS = {
         }
     },
 }
+
+"""-----------------------------RESTFRAMEWORK AUTHENTICATION CLASS--------------
+"""
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'exarth_rest_auth.jwt_auth.JWTCookieAuthentication',
+    )
+}
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 """
 
 
