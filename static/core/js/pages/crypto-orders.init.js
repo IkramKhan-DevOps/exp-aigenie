@@ -1,1 +1,0 @@
-$(".select2-search-disable").select2({minimumResultsForSearch:1/0}),$(document).ready(function(){$(".datatable").DataTable()});
