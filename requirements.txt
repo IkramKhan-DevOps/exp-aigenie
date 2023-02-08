@@ -8,12 +8,12 @@ python-decouple
 django-ckeditor
 django-crispy-forms
 pillow
-six~=1.16.0
+six
 Faker
 django-phonenumber-field
 django-phonenumbers
 django-environ
-DateTime~=5.0
+DateTime
 djangorestframework
 exarth-rest-auth
 drf_yasg
