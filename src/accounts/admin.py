@@ -209,6 +209,6 @@ class UserCustomAdmin(admin.ModelAdmin):
 # CUSTOM USER
 admin.site.register(User, UserCustomAdmin)
 
-admin.site.site_header = "Root Access"
-admin.site.site_title = "APP"
-admin.site.index_title = "Dashboard"
+admin.site.site_header = 'ROOT ADMINISTRATION'
+admin.site.index_title = 'AI Genie'
+admin.site.site_title = 'root administration'
