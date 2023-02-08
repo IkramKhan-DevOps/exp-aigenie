@@ -235,3 +235,12 @@ GOOGLE_CALLBACK_URL=http://127.0.0.1:8000/accounts/google/login/callback/
 ALLOWED_HOST=127.0.0.1
 SITE_ID=1
 """
+
+""" DEBUGGING TOOLS -----------------------------------------------------------------------------"""
+if ENVIRONMENT != 'server':
+    INSTALLED_APPS += [
+        'django_browser_reload'
+    ]
+    MIDDLEWARE += [
+        'django_browser_reload.middleware.BrowserReloadMiddleware'
+    ]
