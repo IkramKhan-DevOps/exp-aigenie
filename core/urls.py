@@ -60,13 +60,9 @@ urlpatterns = [
 # UNIVERSAL URLS
 urlpatterns += [
     # 404-500-00 PAGES
-
     path('under-construction/', TemplateView.as_view(template_name='000.html')),
     path('404/', TemplateView.as_view(template_name='404.html')),
     path('500/', TemplateView.as_view(template_name='500.html')),
-
-    # REMOVE THIS WHEN HOME VIEW CREATED
-    path('', TemplateView.as_view(template_name='000.html')),
 ]
 
 # Rest Auth UI Configuration
