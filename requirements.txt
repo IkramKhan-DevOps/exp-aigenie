@@ -15,6 +15,6 @@ django-phonenumbers
 django-environ
 DateTime
 djangorestframework
-exarth-rest-auth
+dj-rest-auth
 drf_yasg
 openai

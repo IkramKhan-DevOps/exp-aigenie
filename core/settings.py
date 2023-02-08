@@ -19,8 +19,7 @@ env = environ.Env(
 )
 environ.Env.read_env(BASE_DIR / '.env')
 
-DEBUG = True
-SERVER = False
+DEBUG = env('DEBUG')
 AUTH_USER_MODEL = 'accounts.User'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
@@ -49,17 +48,20 @@ INSTALLED_APPS = [
     'django_filters',
     'phonenumber_field',
 
+    # ALL AUTH
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
+    # REST SERVICES
     'rest_framework',
     'rest_framework.authtoken',
-    'exarth_rest_auth',
-    'exarth_rest_auth.registration',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
     'drf_yasg',
 
+    # APP APPS
     'src.api.apps.ApiConfig',
     'src.website.apps.WebsiteConfig',
     'src.accounts.apps.AccountsConfig',
@@ -137,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 """ INTERNATIONALIZATION --------------------------------------------------------------------------------"""
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'Asia/Tashkent'
+TIME_ZONE = env('TIME_ZONE')
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -146,10 +148,10 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_HOST_USER = "saqibahmad778866@gmail.com"
-EMAIL_HOST_PASSWORD = "yizvykxigmgvkdns"
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
-DEFAULT_FROM_EMAIL = "saqibahmad778866@gmail.com"
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 """ RESIZER IMAGE --------------------------------------------------------------------------------"""
 STATIC_URL = '/static/'
