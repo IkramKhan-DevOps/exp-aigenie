@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.shortcuts import render
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
+from django.views.static import serve
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 
-from core.settings import ENVIRONMENT
+from core.settings import ENVIRONMENT, MEDIA_ROOT, STATIC_ROOT
 
 
 def handler404(request, *args, **kwargs):
@@ -73,6 +74,12 @@ urlpatterns += [
     re_path(r'^social-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('api-docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
+
+urlpatterns += [
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
+]
+
 
 # if ENVIRONMENT != 'server':
 #     urlpatterns += [
