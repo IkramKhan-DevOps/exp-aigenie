@@ -69,5 +69,6 @@ urlpatterns += [
 urlpatterns += [
     re_path(r'^social-auth/', include('dj_rest_auth.urls')),
     re_path(r'^social-auth/registration/', include('dj_rest_auth.registration.urls')),
-    path('api-docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),]
+    path('api-docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+]
 
