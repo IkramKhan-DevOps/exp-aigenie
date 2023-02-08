@@ -74,7 +74,7 @@ urlpatterns += [
     path('api-docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
-if ENVIRONMENT != 'server':
-    urlpatterns += [
-        path("__reload__/", include("django_browser_reload.urls"))
-    ]
+# if ENVIRONMENT != 'server':
+#     urlpatterns += [
+#         path("__reload__/", include("django_browser_reload.urls"))
+#     ]
