@@ -1,8 +1,8 @@
-from django.urls import include, re_path, path
-from rest_framework import permissions
+from django.urls import re_path, path
 
 from src.api.views import (
-    OpenAIChatAPi, PurchaseRetrieveAPIView, PurchaseListAPIView, PurchaseCreateAPIView, PackageListAPIView
+    OpenAIChatAPi, PurchaseRetrieveAPIView, PurchaseListAPIView, PurchaseCreateAPIView,
+    PackageListAPIView
 )
 
 app_name = "api"

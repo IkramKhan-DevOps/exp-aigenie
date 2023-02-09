@@ -53,6 +53,7 @@ class PurchaseCreateAPIView(CreateAPIView):
 
 
 class PurchaseRetrieveAPIView(RetrieveAPIView):
+    queryset = Purchase.objects.all()
     serializer_class = PurchaseSerializer
     permission_classes = [permissions.IsAuthenticated]
 

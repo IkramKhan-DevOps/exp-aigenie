@@ -85,6 +85,21 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+}
+
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
@@ -211,38 +226,12 @@ SWAGGER_SETTINGS = {
         }
     },
 }
-"""
-
-
-TEST DATA FOR >ENV
-------------------------------------------------
-ENVIRONMENT=local
-DB_ENGINE=django.db.backends.postgresql_psycopg2
-DB_HOST=localhost
-DB_USER=thestaffmanagerdbrootuser
-DB_PASS=thestaffmanagerdbrootuserpassword
-DB_NAME=thestaffmanagerdb
-DB_PORT=django.db.backends.postgresql_psycopg2
-EMAIL_USE_TLS=True
-EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=donald.duck0762@gmail.com
-EMAIL_HOST_PASSWORD=iblqezaitfuxxbfg
-EMAIL_PORT=587
-BASE_URL=http://127.0.0.1:8000
-DEFAULT_FROM_EMAIL=Support-Team <mark@exarth.com>
-DEBUG=True
-SECRET_KEY=YUwsjlxk30PYf6dovmiUK8c0i1MARKIiejYh7kSDv3fiBq2mlWmeXap
-TIME_ZONE=Asia/Karachi
-GOOGLE_CALLBACK_URL=http://127.0.0.1:8000/accounts/google/login/callback/
-ALLOWED_HOST=127.0.0.1
-SITE_ID=1
-"""
 
 """ DEBUGGING TOOLS -----------------------------------------------------------------------------"""
-if ENVIRONMENT != 'server':
-    INSTALLED_APPS += [
-        'django_browser_reload'
-    ]
-    MIDDLEWARE += [
-        'django_browser_reload.middleware.BrowserReloadMiddleware'
-    ]
+# if ENVIRONMENT != 'server':
+#     INSTALLED_APPS += [
+#         'django_browser_reload'
+#     ]
+#     MIDDLEWARE += [
+#         'django_browser_reload.middleware.BrowserReloadMiddleware'
+#     ]
