@@ -9,7 +9,8 @@ class PackageAdmin(admin.ModelAdmin):
 
 
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ['user', 'package', 'amount_total', 'amount_paid', 'tokens', 'created_on', 'is_active']
+    list_filter = ['package', 'payment_method']
+    list_display = ['user', 'package', 'amount_total', 'amount_paid', 'payment_method', 'tokens', 'created_on', 'is_active']
 
 
 admin.site.register(Package, PackageAdmin)
