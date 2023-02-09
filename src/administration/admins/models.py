@@ -25,7 +25,7 @@ class Purchase(models.Model):
         ('gp', 'Google Pay'),
         ('ap', 'Apple Pay'),
     )
-    user = models.ForeignKey(User, related_name='users', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='users', on_delete=models.SET_NULL, null=True, blank=False)
     package = models.ForeignKey(Package, related_name='packages', on_delete=models.SET_NULL, null=True, blank=False)
     amount_total = models.FloatField()
     amount_paid = models.FloatField()
