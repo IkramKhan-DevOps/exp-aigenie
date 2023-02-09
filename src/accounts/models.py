@@ -37,6 +37,25 @@ class User(AbstractUser):
         self.profile_image.delete(save=True)
         super(User, self).delete(*args, **kwargs)
 
+    def get_user_name(self):
+        if self.first_name or self.last_name:
+            return self.first_name + " " + self.last_name
+        return self.username
+
+    def get_user_profile(self):
+        return Profile.objects.get_or_create(user=self)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
+
+    tokens_total = models.PositiveIntegerField(default=0)
+    tokens_used = models.PositiveIntegerField(default=0)
+    tokens_available = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.user.get_user_name
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL, dispatch_uid="user_registered")
 def on_user_registration(sender, instance, created, **kwargs):
@@ -48,4 +67,5 @@ def on_user_registration(sender, instance, created, **kwargs):
     :param kwargs:
     :return:
     """
-    pass
+    if created:
+        profile = instance.get_user_profile
