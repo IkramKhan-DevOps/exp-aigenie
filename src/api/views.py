@@ -1,12 +1,12 @@
 import os
 import openai
 from rest_framework import status, permissions
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, \
-    RetrieveAPIView, ListAPIView, CreateAPIView, get_object_or_404
+from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from core.settings import OPEN_AI_API_KEY
 from src.api.serializer import PurchaseSerializer, PackageSerializer, PurchaseCreateSerializer
 from src.administration.admins.models import Package, Purchase
 
@@ -16,7 +16,7 @@ class OpenAIChatAPi(APIView):
 
     def post(self, request):
         text = request.data.get('text')
-        openai.api_key = os.environ.get('OPEN_AI_API_KEY')
+        openai.api_key = OPEN_AI_API_KEY
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=text,
