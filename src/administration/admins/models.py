@@ -8,13 +8,15 @@ class Package(models.Model):
     description = models.TextField(null=True, blank=True)
     price = models.FloatField()
     tokens = models.PositiveIntegerField()
+    priority = models.PositiveIntegerField(default=0)
 
+    is_popular = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-created_on']
+        ordering = ['priority']
 
     def __str__(self):
         return self.name

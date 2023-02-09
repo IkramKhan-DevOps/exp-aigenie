@@ -5,7 +5,7 @@ from .models import (
 
 
 class PackageAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'tokens', 'created_on', 'is_active']
+    list_display = ['name', 'price', 'tokens', 'priority', 'created_on', 'is_popular', 'is_active']
 
 
 class PurchaseAdmin(admin.ModelAdmin):
