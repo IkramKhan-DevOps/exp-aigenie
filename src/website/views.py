@@ -1,4 +1,6 @@
-from src.administration.admins.models import Package
+from django.http import FileResponse, Http404
+
+from src.administration.admins.models import Package, ApplicationSoftware
 from django.views.generic import TemplateView
 
 
@@ -17,4 +19,6 @@ class PrivacyPolicyView(TemplateView):
 
 class TermsAndConditionsView(TemplateView):
     template_name = 'website/terms-and-conditions.html'
+
+
 
