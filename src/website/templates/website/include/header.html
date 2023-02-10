@@ -78,12 +78,29 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <a href="#" class="btn btn-light">Download APK</a>
-                        <br><br>
-                        <p class="text-white">You can also download it from Playstore and Appstore, check the links below.</p>
-                        <br>
-                        <a href="#" class="btn btn-outline-success"><i class="fa fa-android"></i> Go to Playstore</a> |
-                        <a href="#" class="btn btn-outline-primary"><i class="fa fa-apple"></i> Go to AppStore</a>
+                        {% if app %}
+                            <a href="{% url 'website:download_app' %}" class="btn btn-light">Download APK</a>
+                            <br><br>
+                            <p class="text-white">You can also download it from Playstore and Appstore, check the links
+                                below.</p>
+                            <br>
+
+                            {% if app.android_link %}
+                                <a href="{{ app.android_link }}" target="_blank" class="btn btn-outline-success">
+                                    <i class="fa fa-android"></i>
+                                    Go to Playstore</a> &nbsp;&nbsp;
+                            {% endif %}
+                            {% if app.ios_link %}
+                                <a href="{{ app.ios_link }}" target="_blank" class="btn btn-outline-primary">
+                                    <i class="fa fa-apple"></i>
+                                    Go to AppStore
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <p class="text-danger">
+                                Application is not available for now.
+                            </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

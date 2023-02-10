@@ -10,6 +10,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['packages'] = Package.objects.all()
+        app = ApplicationSoftware.objects.all().order_by('-version')
+        context['app'] = app[0] if app else None
         return context
 
 
