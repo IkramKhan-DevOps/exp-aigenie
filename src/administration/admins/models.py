@@ -44,3 +44,24 @@ class Purchase(models.Model):
     def __str__(self):
         return str(self.pk)
 
+
+class ApplicationSoftware(models.Model):
+
+    name = models.CharField(max_length=255)
+    version = models.FloatField(help_text="Application version must be update [0.*] or upgrade [*.0]")
+    description = models.TextField(null=True, blank=True, help_text="Detailed down description")
+    app_file = models.FileField(upload_to='applications/', help_text="Please user a installers or zip files here")
+    android_link = models.URLField(null=True, blank=True)
+    ios_link = models.URLField(null=True, blank=True)
+
+    total_downloads = models.PositiveIntegerField(default=0)
+
+    is_active = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Applications and Versions"
+
+    def __str__(self):
+        return self.name

@@ -43,7 +43,8 @@ class User(AbstractUser):
         return self.username
 
     def get_user_profile(self):
-        return Profile.objects.get_or_create(user=self)
+        profile, flag = Profile.objects.get_or_create(user=self)
+        return profile
 
 
 class Profile(models.Model):
@@ -54,7 +55,7 @@ class Profile(models.Model):
     tokens_available = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.user.get_user_name
+        return self.user.get_user_name()
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL, dispatch_uid="user_registered")
@@ -68,4 +69,4 @@ def on_user_registration(sender, instance, created, **kwargs):
     :return:
     """
     if created:
-        profile = instance.get_user_profile
+        profile = instance.get_user_profile()

@@ -1,4 +1,3 @@
-import os
 import openai
 from rest_framework import status, permissions
 from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, get_object_or_404
@@ -7,7 +6,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core.settings import OPEN_AI_API_KEY
-from src.api.serializer import PurchaseSerializer, PackageSerializer, PurchaseCreateSerializer
+from src.accounts.models import Profile
+from src.api.serializer import PurchaseSerializer, PackageSerializer, PurchaseCreateSerializer, ProfileSerializer
 from src.administration.admins.models import Package, Purchase
 
 
@@ -59,6 +59,15 @@ class PurchaseRetrieveAPIView(RetrieveAPIView):
 
     def get_object(self):
         return get_object_or_404(Purchase.objects.filter(user=self.request.user), pk=self.kwargs['pk'])
+
+
+class ProfileRetrieveView(RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user.get_user_profile()
 
 
 class PackageListAPIView(ListAPIView):

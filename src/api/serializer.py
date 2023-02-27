@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from src.accounts.models import Profile, User
 from src.administration.admins.models import (
     Purchase, Package
 )
@@ -33,4 +35,24 @@ class PurchaseCreateSerializer(serializers.ModelSerializer):
         fields = ['id', 'package', 'amount_total', 'amount_paid', 'tokens', 'payment_method', 'is_active', 'created_on']
         read_only_fields = [
             'id', 'amount_total', 'amount_paid', 'tokens', 'is_active', 'created_on'
+        ]
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = [
+            'profile_image', 'first_name', 'last_name', 'username', 'email', 'phone_number',
+            'is_active', 'date_joined', 'last_login'
+        ]
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = [
+            'user', 'tokens_total', 'tokens_used', 'tokens_available'
         ]
