@@ -30,6 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 ENVIRONMENT = env('ENVIRONMENT')
 ALLOWED_HOSTS = ["*"]
 GOOGLE_CALLBACK_ADDRESS = env('GOOGLE_CALLBACK_URL')
+APPLE_CALLBACK_ADDRESS = env('APPLE_CALLBACK_URL')
 SITE_ID = int(env('SITE_ID'))
 OPEN_AI_API_KEY = env('OPEN_AI_API_KEY')
 
@@ -94,7 +95,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],

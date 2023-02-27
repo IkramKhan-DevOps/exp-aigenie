@@ -1,3 +1,4 @@
+from allauth.socialaccount.providers.apple.client import AppleOAuth2Client
 from allauth.socialaccount.providers.apple.views import AppleOAuth2Adapter
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -12,7 +13,7 @@ from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 
 from dj_rest_auth.registration.views import SocialLoginView
 
-from core.settings import GOOGLE_CALLBACK_ADDRESS
+from core.settings import GOOGLE_CALLBACK_ADDRESS, APPLE_CALLBACK_ADDRESS
 from src.accounts.forms import UserProfileForm
 
 
@@ -60,3 +61,6 @@ class FacebookLoginView(SocialLoginView):
 
 class AppleLoginView(SocialLoginView):
     adapter_class = AppleOAuth2Adapter
+    callback_url = APPLE_CALLBACK_ADDRESS
+    client_class = AppleOAuth2Client
+    # serializer_class = CustomAppleSocialLoginSerializer
